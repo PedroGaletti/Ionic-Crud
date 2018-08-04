@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>List Products</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let item of items">
+      <ion-item>
+          <h2>{{ item.nome }}</h2>
+          <p>{{ item.marca }}</p>
+      </ion-item>
+
+      <img src="{{ item.cover }}" class="img">
+
+      <ion-card-content>
+        <p><b>Quantidade:</b> R$ {{ item.quantidade }}</p>
+        <p><b>Valor:</b> R$ {{ item.valor }}</p>
+      </ion-card-content>
+
+      <ion-grid class="grid">
+        <ion-row class="row" justify-content-center justify-content-around>
+          <ion-col col-3>
+            <button ion-button color="primary" clear icon-icon (click)="edit(item._id)">
+              <ion-icon ios="md-create" md="md-create">  
+              </ion-icon>
+            </button>
+          </ion-col>
+          
+          <ion-col col-3>
+            <button ion-button color="danger" clear icon-icon (click)="delete(item._id)">
+              <ion-icon ios="md-trash" md="md-trash">  
+              </ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card>
+
+    <ion-fab right bottom class="fab-create">
+      <button (click)="add()" ion-fab color="dark" class="button-create">
+        <ion-icon ios="md-add" name="md-add"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>

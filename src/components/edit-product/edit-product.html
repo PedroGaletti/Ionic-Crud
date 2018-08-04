@@ -1,0 +1,73 @@
+<ion-header id="header">
+
+    <ion-navbar>
+      <ion-title>Edit Product</ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only clear color="dark" (click)="closeModal()">
+          <ion-icon name="md-close-circle">
+          </ion-icon>
+        </button>
+      </ion-buttons>
+      
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding id="content" no-bouce>
+    <form padding [formGroup]="formProduct" (ngSubmit)="edit(); $event.preventDefault()" class="form" ion-fixed>
+      <ion-list no-lines>
+        <ion-item *ngIf="error">
+          <p>Os dados informados estão inválidos</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="nome"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="formProduct.get('nome').errors && formProduct.get('nome').dirty">
+          <p *ngIf="formProduct.get('nome').hasError('required')">Campo Obrigatório</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Quantidade</ion-label>
+          <ion-input type="number" spellcheck="false" autocapitalize="off" formControlName="quantidade"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="formProduct.get('quantidade').errors && formProduct.get('quantidade').dirty">
+          <p *ngIf="formProduct.get('quantidade').hasError('required')">Campo Obrigatório</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Valor</ion-label>
+          <ion-input type="number" spellcheck="false" autocapitalize="off" formControlName="valor"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="formProduct.get('valor').errors && formProduct.get('valor').dirty">
+          <p *ngIf="formProduct.get('valor').hasError('required')">Campo Obrigatório</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Marca</ion-label>
+          <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="marca"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="formProduct.get('marca').errors && formProduct.get('marca').dirty">
+          <p *ngIf="formProduct.get('marca').hasError('required')">Campo Obrigatório</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Cover</ion-label>
+          <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="cover"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="formProduct.get('cover').errors && formProduct.get('cover').dirty">
+          <p *ngIf="formProduct.get('cover').hasError('required')">Campo Obrigatório</p>
+        </ion-item>
+  
+        <button ion-button full type="submit" [disabled]="formProduct.invalid">Enviar</button>
+      </ion-list>
+    </form>
+  </ion-content>
+  

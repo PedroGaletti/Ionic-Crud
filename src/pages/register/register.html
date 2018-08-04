@@ -1,0 +1,77 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formUser" (ngSubmit)="create(); $event.preventDefault()">
+    <ion-list no-lines>
+      <ion-item *ngIf="error">
+        <p>Os dados informados estão inválidos</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('nome').errors && formUser.get('nome').dirty">
+        <p *ngIf="formUser.get('nome').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" spellcheck="false" autocapitalize="off" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('password').errors && formUser.get('password').dirty">
+        <p *ngIf="formUser.get('password').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirmar Senha</ion-label>
+        <ion-input type="password" spellcheck="false" autocapitalize="off" formControlName="passwordAgain"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('passwordAgain').errors && formUser.get('passwordAgain').dirty">
+        <p *ngIf="formUser.get('passwordAgain').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="email" spellcheck="false" autocapitalize="off" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('email').errors && formUser.get('email').dirty">
+        <p *ngIf="formUser.get('email').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Telefone</ion-label>
+        <ion-input type="number" spellcheck="false" autocapitalize="off" formControlName="telefone"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('telefone').errors && formUser.get('telefone').dirty">
+        <p *ngIf="formUser.get('telefone').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Cover</ion-label>
+        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="cover"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <img src="{{ formUser.get('cover').value }}" *ngIf="formUser.get('cover').value" width="100" height="114">
+      </ion-item>
+
+      <ion-item *ngIf="formUser.get('cover').errors && formUser.get('cover').dirty">
+        <p *ngIf="formUser.get('cover').hasError('required')">Campo Obrigatório</p>
+      </ion-item>
+
+      <button ion-button full type="submit" [disabled]="formUser.invalid">Enviar</button>
+    </ion-list>
+  </form>
+</ion-content>

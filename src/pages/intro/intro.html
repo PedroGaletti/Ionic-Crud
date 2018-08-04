@@ -1,0 +1,19 @@
+<ion-content class="tutorial-page" padding>
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <button (click)="goApp()" ion-button large clear icon-end color="primary" class="button-center">
+        <img src="../../assets/icons/start.gif" class="slide-image image-center"/>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
